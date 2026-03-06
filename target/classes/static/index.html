@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Кофейня — Система лояльности</title>
+  <style>
+    body { font-family: sans-serif; max-width: 900px; margin: 0 auto; padding: 1rem; }
+    h1 { color: #333; }
+    section { margin: 1.5rem 0; }
+    table { border-collapse: collapse; width: 100%; }
+    th, td { border: 1px solid #ccc; padding: 0.5rem; text-align: left; }
+    th { background: #f5f5f5; }
+    button { margin: 0 0.25rem; padding: 0.4rem 0.8rem; cursor: pointer; }
+    input, select { margin: 0 0.5rem 0.5rem 0; padding: 0.4rem; }
+    .error { color: red; }
+  </style>
+</head>
+<body>
+  <h1>Система лояльности кофейни</h1>
+
+  <section>
+    <h2>Клиенты</h2>
+    <p><input type="text" id="clientSearch" placeholder="Поиск по ФИО/телефону"> <button onclick="loadClients()">Найти</button> <button onclick="showClientForm()">Добавить клиента</button></p>
+    <div id="clientForm" style="display:none;">
+      <input type="hidden" id="clientId">
+      <input type="text" id="clientName" placeholder="ФИО" required>
+      <input type="text" id="clientPhone" placeholder="Телефон">
+      <input type="text" id="clientEmail" placeholder="Email">
+      <button onclick="saveClient()">Сохранить</button> <button onclick="hideClientForm()">Отмена</button>
+    </div>
+    <table>
+      <thead><tr><th>ID</th><th>ФИО</th><th>Телефон</th><th>Email</th><th>Баллы</th><th></th></tr></thead>
+      <tbody id="clientList"></tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>Награды</h2>
+    <p><button onclick="showRewardForm()">Добавить награду</button></p>
+    <div id="rewardForm" style="display:none;">
+      <input type="hidden" id="rewardId">
+      <input type="text" id="rewardName" placeholder="Название" required>
+      <input type="number" id="rewardCost" placeholder="Баллы" min="1">
+      <button onclick="saveReward()">Сохранить</button> <button onclick="hideRewardForm()">Отмена</button>
+    </div>
+    <table>
+      <thead><tr><th>ID</th><th>Название</th><th>Баллы</th><th></th></tr></thead>
+      <tbody id="rewardList"></tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>Покупка</h2>
+    <p>Клиент: <select id="purchaseClientId"></select> Сумма (руб.): <input type="number" id="purchaseAmount" min="0" step="0.01" placeholder="например 350"> <button type="button" onclick="registerPurchase()">Записать</button></p>
+    <p class="error" id="purchaseError"></p>
+    <p style="font-size:0.9em;color:#666;">Сначала добавьте клиента выше и выберите его в списке; укажите сумму чека — баллы начислятся автоматически.</p>
+  </section>
+
+  <section>
+    <h2>Обмен баллов</h2>
+    <p>Клиент: <select id="redeemClientId"></select> Награда: <select id="redeemRewardId"></select> <button onclick="redeem()">Обменять</button></p>
+    <p class="error" id="redeemError"></p>
+  </section>
+
+  <script>
+    const API = '';
+    async function apiError(r) {
+      const text = await r.text();
+      try { const j = JSON.parse(text); return j.error || j.message || text; } catch (_) { return text; }
+    }
+    async function get(url) { const r = await fetch(API + url); if (!r.ok) throw new Error(await apiError(r)); return r.json(); }
+    async function post(url, body) {
+      const r = await fetch(API + url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
+      if (!r.ok) throw new Error(await apiError(r));
+      return r.json();
+    }
+    async function put(url, body) { const r = await fetch(API + url, { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) }); if (!r.ok) throw new Error(await r.text()); return r.json(); }
+    async function del(url) { const r = await fetch(API + url, { method: 'DELETE' }); if (!r.ok) throw new Error(await r.text()); }
+
+    async function loadClients() {
+      const q = document.getElementById('clientSearch').value;
+      const url = q ? '/api/clients?search=' + encodeURIComponent(q) : '/api/clients';
+      const list = await get(url);
+      const tbody = document.getElementById('clientList');
+      tbody.innerHTML = list.map(c => `<tr><td>${c.id}</td><td>${c.fullName}</td><td>${c.phone||''}</td><td>${c.email||''}</td><td>${c.balancePoints}</td><td><button onclick="editClient(${c.id})">Изменить</button><button onclick="deleteClient(${c.id})">Удалить</button></td></tr>`).join('');
+      fillSelect('purchaseClientId', list, 'id', 'fullName');
+      fillSelect('redeemClientId', list, 'id', 'fullName');
+    }
+    async function loadRewards() {
+      const list = await get('/api/rewards');
+      document.getElementById('rewardList').innerHTML = list.map(r => `<tr><td>${r.id}</td><td>${r.name}</td><td>${r.pointsCost}</td><td><button onclick="editReward(${r.id})">Изменить</button><button onclick="deleteReward(${r.id})">Удалить</button></td></tr>`).join('');
+      fillSelect('redeemRewardId', list, 'id', 'name');
+    }
+    function fillSelect(id, arr, valKey, labelKey) {
+      const sel = document.getElementById(id);
+      sel.innerHTML = '<option value="">—</option>' + (arr||[]).map(o => `<option value="${o[valKey]}">${o[labelKey]}</option>`).join('');
+    }
+    function showClientForm() { document.getElementById('clientId').value = ''; document.getElementById('clientName').value = ''; document.getElementById('clientPhone').value = ''; document.getElementById('clientEmail').value = ''; document.getElementById('clientForm').style.display = 'block'; }
+    function hideClientForm() { document.getElementById('clientForm').style.display = 'none'; }
+    async function editClient(id) {
+      const c = await get('/api/clients/' + id);
+      document.getElementById('clientId').value = c.id; document.getElementById('clientName').value = c.fullName; document.getElementById('clientPhone').value = c.phone || ''; document.getElementById('clientEmail').value = c.email || '';
+      document.getElementById('clientForm').style.display = 'block';
+    }
+    async function saveClient() {
+      const id = document.getElementById('clientId').value;
+      const body = { fullName: document.getElementById('clientName').value, phone: document.getElementById('clientPhone').value, email: document.getElementById('clientEmail').value };
+      if (id) await put('/api/clients/' + id, body); else await post('/api/clients', body);
+      hideClientForm(); loadClients();
+    }
+    async function deleteClient(id) { if (confirm('Удалить?')) { await del('/api/clients/' + id); loadClients(); } }
+    function showRewardForm() { document.getElementById('rewardId').value = ''; document.getElementById('rewardName').value = ''; document.getElementById('rewardCost').value = ''; document.getElementById('rewardForm').style.display = 'block'; }
+    function hideRewardForm() { document.getElementById('rewardForm').style.display = 'none'; }
+    async function editReward(id) {
+      const r = await get('/api/rewards/' + id);
+      document.getElementById('rewardId').value = r.id; document.getElementById('rewardName').value = r.name; document.getElementById('rewardCost').value = r.pointsCost;
+      document.getElementById('rewardForm').style.display = 'block';
+    }
+    async function saveReward() {
+      const id = document.getElementById('rewardId').value;
+      const body = { name: document.getElementById('rewardName').value, pointsCost: parseInt(document.getElementById('rewardCost').value, 10) };
+      if (id) await put('/api/rewards/' + id, body); else await post('/api/rewards', body);
+      hideRewardForm(); loadRewards();
+    }
+    async function deleteReward(id) { if (confirm('Удалить?')) { await del('/api/rewards/' + id); loadRewards(); } }
+    async function registerPurchase() {
+      const clientId = document.getElementById('purchaseClientId').value;
+      const amountRaw = document.getElementById('purchaseAmount').value.trim().replace(',', '.');
+      const amount = amountRaw === '' ? NaN : parseFloat(amountRaw);
+      const errEl = document.getElementById('purchaseError');
+      errEl.textContent = '';
+      if (!clientId) { errEl.textContent = 'Выберите клиента.'; return; }
+      if (amountRaw === '' || isNaN(amount)) { errEl.textContent = 'Укажите сумму (число).'; return; }
+      if (amount <= 0) { errEl.textContent = 'Сумма должна быть больше 0.'; return; }
+      try {
+        await post('/api/purchases', { clientId: parseInt(clientId, 10), amountRub: amount });
+        loadClients();
+        document.getElementById('purchaseAmount').value = '';
+      } catch (e) {
+        errEl.textContent = (e.message || String(e)).slice(0, 200);
+      }
+    }
+    async function redeem() {
+      const clientId = document.getElementById('redeemClientId').value;
+      const rewardId = document.getElementById('redeemRewardId').value;
+      document.getElementById('redeemError').textContent = '';
+      if (!clientId || !rewardId) { document.getElementById('redeemError').textContent = 'Выберите клиента и награду'; return; }
+      try { await post('/api/redeem', { clientId: parseInt(clientId,10), rewardId: parseInt(rewardId,10) }); loadClients(); } catch (e) { document.getElementById('redeemError').textContent = e.message; }
+    }
+    async function init() {
+      try {
+        await loadClients();
+        await loadRewards();
+      } catch (e) {
+        console.error(e);
+        document.getElementById('clientList').innerHTML = '<tr><td colspan="6">Ошибка загрузки: ' + (e.message || e) + '</td></tr>';
+      }
+    }
+    init();
+  </script>
+</body>
+</html>

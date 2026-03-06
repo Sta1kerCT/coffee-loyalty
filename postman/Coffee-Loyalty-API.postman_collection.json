@@ -1,0 +1,45 @@
+{
+  "info": { "name": "Coffee Loyalty API", "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json" },
+  "item": [
+    {
+      "name": "Clients",
+      "item": [
+        { "name": "List clients", "request": { "method": "GET", "url": "{{baseUrl}}/api/clients" } },
+        { "name": "Get client", "request": { "method": "GET", "url": "{{baseUrl}}/api/clients/1" } },
+        { "name": "Create client", "request": { "method": "POST", "url": "{{baseUrl}}/api/clients", "body": { "mode": "raw", "raw": "{\n  \"fullName\": \"Иван Иванов\",\n  \"phone\": \"+79001234567\",\n  \"email\": \"ivan@example.com\"\n}" } } },
+        { "name": "Update client", "request": { "method": "PUT", "url": "{{baseUrl}}/api/clients/1", "body": { "mode": "raw", "raw": "{\n  \"fullName\": \"Иван Петров\",\n  \"phone\": \"+79001234567\",\n  \"email\": \"ivan@example.com\"\n}" } } },
+        { "name": "Delete client", "request": { "method": "DELETE", "url": "{{baseUrl}}/api/clients/1" } }
+      ]
+    },
+    {
+      "name": "Rewards",
+      "item": [
+        { "name": "List rewards", "request": { "method": "GET", "url": "{{baseUrl}}/api/rewards" } },
+        { "name": "Get reward", "request": { "method": "GET", "url": "{{baseUrl}}/api/rewards/1" } },
+        { "name": "Create reward", "request": { "method": "POST", "url": "{{baseUrl}}/api/rewards", "body": { "mode": "raw", "raw": "{\n  \"name\": \"Кофе в подарок\",\n  \"pointsCost\": 50\n}" } } },
+        { "name": "Update reward", "request": { "method": "PUT", "url": "{{baseUrl}}/api/rewards/1", "body": { "mode": "raw", "raw": "{\n  \"name\": \"Двойной кофе\",\n  \"pointsCost\": 80\n}" } } },
+        { "name": "Delete reward", "request": { "method": "DELETE", "url": "{{baseUrl}}/api/rewards/1" } }
+      ]
+    },
+    {
+      "name": "Purchases",
+      "item": [
+        { "name": "List purchases", "request": { "method": "GET", "url": "{{baseUrl}}/api/purchases" } },
+        { "name": "Create purchase", "request": { "method": "POST", "url": "{{baseUrl}}/api/purchases", "body": { "mode": "raw", "raw": "{\n  \"clientId\": 1,\n  \"amountRub\": 350.00\n}" } } }
+      ]
+    },
+    {
+      "name": "Redeem",
+      "item": [
+        { "name": "Redeem reward", "request": { "method": "POST", "url": "{{baseUrl}}/api/redeem", "body": { "mode": "raw", "raw": "{\n  \"clientId\": 1,\n  \"rewardId\": 1\n}" } } }
+      ]
+    },
+    {
+      "name": "Transactions",
+      "item": [
+        { "name": "Transactions by client", "request": { "method": "GET", "url": "{{baseUrl}}/api/transactions/client/1" } }
+      ]
+    }
+  ],
+  "variable": [{ "key": "baseUrl", "value": "http://localhost:8080" }]
+}

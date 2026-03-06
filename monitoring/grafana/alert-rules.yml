@@ -1,0 +1,21 @@
+# Пример правил алертов (Grafana Alerting или Prometheus Alertmanager).
+# 1) Ошибки в логах: настроить Loki datasource + Loki alert "level=ERROR" или Promtail -> Loki -> Alert.
+# 2) Недоступность сервиса: в Prometheus добавить alert на up{job="coffee-loyalty"} == 0.
+
+groups:
+  - name: coffee-loyalty
+    rules:
+      - alert: ServiceDown
+        expr: up{job="coffee-loyalty"} == 0
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Coffee Loyalty service is down"
+      - alert: HighErrorRate
+        expr: rate(http_server_requests_seconds_count{job="coffee-loyalty", uri=~".*", status=~"5.."}[5m]) > 0.1
+        for: 2m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High 5xx error rate"

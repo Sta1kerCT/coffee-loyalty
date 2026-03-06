@@ -1,0 +1,11 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://${DB_HOST:db}:5432/loyalty
+    username: ${SPRING_DATASOURCE_USERNAME:loyalty}
+    password: ${SPRING_DATASOURCE_PASSWORD:loyalty}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+  kafka:
+    bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS:kafka:9092}

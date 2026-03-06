@@ -1,0 +1,114 @@
+<mxfile host="app.diagrams.net" modified="2025-01-01T00:00:00.000Z" agent="5.0" version="22.1.0" type="device">
+  <diagram name="1. Клиенты" id="p1">
+    <mxGraphModel dx="900" dy="700" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="650" pageHeight="500" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="f1" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=2;" vertex="1" parent="1"><mxGeometry x="20" y="20" width="610" height="400" as="geometry"/></mxCell>
+        <mxCell id="t1" value="Клиенты" style="text;html=1;fontStyle=1;fontSize=16;" vertex="1" parent="1"><mxGeometry x="40" y="35" width="120" height="28" as="geometry"/></mxCell>
+        <mxCell id="s1" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;" vertex="1" parent="1"><mxGeometry x="40" y="75" width="280" height="28" as="geometry"/></mxCell>
+        <mxCell id="s1t" value="Поиск по ФИО или телефону" style="text;html=1;fontSize=11;fontColor=#666666;" vertex="1" parent="1"><mxGeometry x="48" y="79" width="180" height="20" as="geometry"/></mxCell>
+        <mxCell id="b1" value="Найти" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1"><mxGeometry x="330" y="74" width="70" height="28" as="geometry"/></mxCell>
+        <mxCell id="b2" value="+ Добавить клиента" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1"><mxGeometry x="450" y="74" width="160" height="28" as="geometry"/></mxCell>
+        <mxCell id="tab1" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fafafa;strokeColor=#999999;" vertex="1" parent="1"><mxGeometry x="40" y="118" width="570" height="280" as="geometry"/></mxCell>
+        <mxCell id="h1" value="ID  |  ФИО  |  Телефон  |  Email  |  Баланс баллов  |  Действия" style="text;html=1;fontStyle=1;fontSize=11;align=left;" vertex="1" parent="1"><mxGeometry x="50" y="125" width="550" height="22" as="geometry"/></mxCell>
+        <mxCell id="row1" value="1     Иванов И.     +7 900…     ivan@…     50     [Изменить] [Удалить]" style="text;html=1;fontSize=10;align=left;fontColor=#333333;" vertex="1" parent="1"><mxGeometry x="50" y="152" width="550" height="18" as="geometry"/></mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="2. Форма клиента" id="p2">
+    <mxGraphModel dx="900" dy="700" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="650" pageHeight="500" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="f2" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=2;" vertex="1" parent="1"><mxGeometry x="20" y="20" width="400" height="280" as="geometry"/></mxCell>
+        <mxCell id="t2" value="Клиент (создание / редактирование)" style="text;html=1;fontStyle=1;fontSize=14;" vertex="1" parent="1"><mxGeometry x="40" y="35" width="320" height="24" as="geometry"/></mxCell>
+        <mxCell id="l1" value="ФИО" style="text;html=1;fontSize=12;" vertex="1" parent="1"><mxGeometry x="40" y="75" width="80" height="20" as="geometry"/></mxCell>
+        <mxCell id="i1" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;" vertex="1" parent="1"><mxGeometry x="140" y="72" width="260" height="26" as="geometry"/></mxCell>
+        <mxCell id="l2" value="Телефон" style="text;html=1;fontSize=12;" vertex="1" parent="1"><mxGeometry x="40" y="108" width="80" height="20" as="geometry"/></mxCell>
+        <mxCell id="i2" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;" vertex="1" parent="1"><mxGeometry x="140" y="105" width="260" height="26" as="geometry"/></mxCell>
+        <mxCell id="l3" value="Email" style="text;html=1;fontSize=12;" vertex="1" parent="1"><mxGeometry x="40" y="141" width="80" height="20" as="geometry"/></mxCell>
+        <mxCell id="i3" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;" vertex="1" parent="1"><mxGeometry x="140" y="138" width="260" height="26" as="geometry"/></mxCell>
+        <mxCell id="btn1" value="Сохранить" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1"><mxGeometry x="40" y="185" width="100" height="32" as="geometry"/></mxCell>
+        <mxCell id="btn2" value="Отмена" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1"><mxGeometry x="150" y="185" width="100" height="32" as="geometry"/></mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="3. Награды" id="p3">
+    <mxGraphModel dx="900" dy="700" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="650" pageHeight="500" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="f3" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=2;" vertex="1" parent="1"><mxGeometry x="20" y="20" width="610" height="380" as="geometry"/></mxCell>
+        <mxCell id="t3" value="Награды" style="text;html=1;fontStyle=1;fontSize=16;" vertex="1" parent="1"><mxGeometry x="40" y="35" width="100" height="28" as="geometry"/></mxCell>
+        <mxCell id="b3" value="+ Добавить награду" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1"><mxGeometry x="40" y="75" width="180" height="32" as="geometry"/></mxCell>
+        <mxCell id="tab3" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fafafa;strokeColor=#999999;" vertex="1" parent="1"><mxGeometry x="40" y="120" width="570" height="260" as="geometry"/></mxCell>
+        <mxCell id="h3" value="ID  |  Название  |  Стоимость (баллы)  |  Действия" style="text;html=1;fontStyle=1;fontSize=11;align=left;" vertex="1" parent="1"><mxGeometry x="50" y="128" width="540" height="22" as="geometry"/></mxCell>
+        <mxCell id="r3" value="1     Кофе в подарок     50     [Изменить] [Удалить]" style="text;html=1;fontSize=10;align=left;fontColor=#333333;" vertex="1" parent="1"><mxGeometry x="50" y="155" width="540" height="18" as="geometry"/></mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="4. Форма награды" id="p4">
+    <mxGraphModel dx="900" dy="700" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="650" pageHeight="500" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="f4" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=2;" vertex="1" parent="1"><mxGeometry x="20" y="20" width="380" height="220" as="geometry"/></mxCell>
+        <mxCell id="t4" value="Награда (создание / редактирование)" style="text;html=1;fontStyle=1;fontSize=14;" vertex="1" parent="1"><mxGeometry x="40" y="35" width="300" height="24" as="geometry"/></mxCell>
+        <mxCell id="l4a" value="Название" style="text;html=1;fontSize=12;" vertex="1" parent="1"><mxGeometry x="40" y="72" width="90" height="20" as="geometry"/></mxCell>
+        <mxCell id="i4a" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;" vertex="1" parent="1"><mxGeometry x="140" y="69" width="240" height="26" as="geometry"/></mxCell>
+        <mxCell id="l4b" value="Стоимость (баллы)" style="text;html=1;fontSize=12;" vertex="1" parent="1"><mxGeometry x="40" y="108" width="130" height="20" as="geometry"/></mxCell>
+        <mxCell id="i4b" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;" vertex="1" parent="1"><mxGeometry x="180" y="105" width="100" height="26" as="geometry"/></mxCell>
+        <mxCell id="btn4a" value="Сохранить" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1"><mxGeometry x="40" y="150" width="100" height="32" as="geometry"/></mxCell>
+        <mxCell id="btn4b" value="Отмена" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1"><mxGeometry x="150" y="150" width="100" height="32" as="geometry"/></mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="5. Транзакции баллов" id="p5">
+    <mxGraphModel dx="900" dy="700" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="650" pageHeight="500" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="f5" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=2;" vertex="1" parent="1"><mxGeometry x="20" y="20" width="610" height="380" as="geometry"/></mxCell>
+        <mxCell id="t5" value="Транзакции баллов — Иванов Иван" style="text;html=1;fontStyle=1;fontSize=14;" vertex="1" parent="1"><mxGeometry x="40" y="35" width="320" height="24" as="geometry"/></mxCell>
+        <mxCell id="back5" value="← Назад к списку" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1"><mxGeometry x="40" y="68" width="120" height="28" as="geometry"/></mxCell>
+        <mxCell id="tab5" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fafafa;strokeColor=#999999;" vertex="1" parent="1"><mxGeometry x="40" y="108" width="570" height="270" as="geometry"/></mxCell>
+        <mxCell id="h5" value="Дата  |  Сумма (+/-)  |  Тип  |  Описание" style="text;html=1;fontStyle=1;fontSize=11;align=left;" vertex="1" parent="1"><mxGeometry x="50" y="116" width="540" height="22" as="geometry"/></mxCell>
+        <mxCell id="row5" value="04.03.2025    +35    Покупка    Покупка #12" style="text;html=1;fontSize=10;align=left;fontColor=#333333;" vertex="1" parent="1"><mxGeometry x="50" y="143" width="540" height="18" as="geometry"/></mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="6. Регистрация покупки" id="p6">
+    <mxGraphModel dx="900" dy="700" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="650" pageHeight="500" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="f6" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=2;" vertex="1" parent="1"><mxGeometry x="20" y="20" width="480" height="260" as="geometry"/></mxCell>
+        <mxCell id="t6" value="Новая покупка" style="text;html=1;fontStyle=1;fontSize=16;" vertex="1" parent="1"><mxGeometry x="40" y="35" width="180" height="28" as="geometry"/></mxCell>
+        <mxCell id="l6a" value="Клиент" style="text;html=1;fontSize=12;" vertex="1" parent="1"><mxGeometry x="40" y="78" width="80" height="20" as="geometry"/></mxCell>
+        <mxCell id="i6a" value="▼ Выберите клиента" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;align=left;spacingLeft=8;" vertex="1" parent="1"><mxGeometry x="140" y="74" width="340" height="28" as="geometry"/></mxCell>
+        <mxCell id="l6b" value="Сумма (руб.)" style="text;html=1;fontSize=12;" vertex="1" parent="1"><mxGeometry x="40" y="118" width="100" height="20" as="geometry"/></mxCell>
+        <mxCell id="i6b" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;" vertex="1" parent="1"><mxGeometry x="150" y="114" width="120" height="28" as="geometry"/></mxCell>
+        <mxCell id="tip6" value="1 балл = 10 руб." style="text;html=1;fontSize=10;fontColor=#666666;" vertex="1" parent="1"><mxGeometry x="280" y="118" width="100" height="20" as="geometry"/></mxCell>
+        <mxCell id="btn6a" value="Записать покупку" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1"><mxGeometry x="40" y="160" width="160" height="32" as="geometry"/></mxCell>
+        <mxCell id="btn6b" value="Отмена" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1"><mxGeometry x="210" y="160" width="100" height="32" as="geometry"/></mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="7. Обмен баллов" id="p7">
+    <mxGraphModel dx="900" dy="700" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="650" pageHeight="500" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="f7" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=2;" vertex="1" parent="1"><mxGeometry x="20" y="20" width="480" height="280" as="geometry"/></mxCell>
+        <mxCell id="t7" value="Обмен баллов на награду" style="text;html=1;fontStyle=1;fontSize=16;" vertex="1" parent="1"><mxGeometry x="40" y="35" width="280" height="28" as="geometry"/></mxCell>
+        <mxCell id="l7a" value="Клиент" style="text;html=1;fontSize=12;" vertex="1" parent="1"><mxGeometry x="40" y="78" width="80" height="20" as="geometry"/></mxCell>
+        <mxCell id="i7a" value="▼ Выберите клиента" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;align=left;spacingLeft=8;" vertex="1" parent="1"><mxGeometry x="140" y="74" width="340" height="28" as="geometry"/></mxCell>
+        <mxCell id="l7b" value="Награда" style="text;html=1;fontSize=12;" vertex="1" parent="1"><mxGeometry x="40" y="118" width="80" height="20" as="geometry"/></mxCell>
+        <mxCell id="i7b" value="▼ Выберите награду" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;align=left;spacingLeft=8;" vertex="1" parent="1"><mxGeometry x="140" y="114" width="340" height="28" as="geometry"/></mxCell>
+        <mxCell id="info7" value="Баланс: 50 баллов · Стоимость награды: 50 баллов" style="text;html=1;fontSize=11;fontColor=#666666;" vertex="1" parent="1"><mxGeometry x="40" y="155" width="340" height="22" as="geometry"/></mxCell>
+        <mxCell id="btn7" value="Обменять" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1"><mxGeometry x="40" y="190" width="120" height="32" as="geometry"/></mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

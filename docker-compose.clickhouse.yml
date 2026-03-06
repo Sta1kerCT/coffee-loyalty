@@ -1,0 +1,19 @@
+
+version: "3.8"
+
+services:
+  clickhouse:
+    image: clickhouse/clickhouse-server:23.8
+    ports:
+      - "8123:8123"
+      - "9000:9000"
+    volumes:
+      - ./kafka-clickhouse/01-clickhouse-kafka-table.sql:/docker-entrypoint-initdb.d/01.sql
+      - ./kafka-clickhouse/02-clickhouse-mv-sums.sql:/docker-entrypoint-initdb.d/02.sql
+      - ./kafka-clickhouse/03-dlq-consumer.sql:/docker-entrypoint-initdb.d/03.sql
+    environment:
+      CLICKHOUSE_DB: default
+    ulimits:
+      nofile: 262144
+    depends_on:
+      - kafka
